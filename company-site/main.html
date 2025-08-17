@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="output.css">
+   <style>
+    header {
+    position: fixed; /* or absolute, or relative */
+    z-index: 100; /* A high number to ensure it's on top */
+}
+main {
+    position: relative; /* or other positioning if needed */
+    z-index: 1; /* Lower than header */
+    padding-top: 80px;
+}
+.home{
+    text-align: center;
+}
+   main{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.95),rgba(0, 0, 0, 0.05)), url(de3.2.jpg);
+    background-position: center 55px;
+      background-repeat: no-repeat;
+       background-attachment: scroll;
+       background-size: cover;
+       background-size: 100% 100%;
+   }
+   </style>
+</head>
+<body>
+<header class=" right-0 left-0 "> 
+  <nav class="bg-gray-300 p-4 text-black font shadow-lg">
+         <div class=" mx-auto flex justify-between items-center">
+            <div>
+                <img src="logo.jpg" height="40px" width="40px">
+            </div>
+
+            <div class="hidden md:flex space-x-11 mr-11">
+                <a href="index.html" class="hover:font-bold transition duration-300">Home</a>
+                <a href="services.html" class="hover:font-bold transition duration-300">Services</a>
+                <a href="portfolio.html" class="hover:font-bold transition duration-300">Portfolio</a>
+                <a href="contact.html" class="hover:font-bold transition duration-300">Contact Us</a>
+            </div>
+
+            <div class="md:hidden">
+                <button id="menu-button" class="text-black focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-300 py-2 mt-2">
+            <a href="index.html" class="block px-4 py-2 text-black hover:bg-gray-400">Home</a>
+            <a href="services.html" class="block px-4 py-2 text-black hover:bg-gray-400">Services</a>
+           <a href="portfolio.html" class="block px-4 py-2 text-black hover:bg-gray-400">Portfolio</a>
+            <a href="contact.html" class="block px-4 py-2 text-black hover:bg-gray-400">Contact Us</a>
+        </div>
+    </nav>
+</header>
+<main class="min-h-screen relative">
+    <div class="home">
+    <h1 class=" text-gray-100 font-extrabold text-5xl mb-6 ">ABOUT US</h1>
+    <p class="text-white font-bold text-lg mb-4 mx-4">Our journey over the past 10 years has been defined by an unwavering dedication to creativity and innovation. We don't just produce; we conceptualize. Our team thrives on understanding your unique requirements and developing bespoke solutions that exceed expectations.At Deepthi Enterprises, our foundation is built on an unwavering commitment to quality. Every product and service we deliver reflects our dedication to excellence, meeting and exceeding expectations. We are committed to continuous improvement, constantly refining our processes to achieve the highest standards. This promise extends to our customers, ensuring their satisfaction and trust are paramount. We stand by our work, fostering long-term relationships through reliability and integrity. Our commitment means consistently delivering value, every time.</p>
+    <p class="text-white font-bold text-lg mx-4">We specialize in providing a comprehensive range of stickers, signages, and sign boards, meticulously crafted to capture attention and communicate effectively. Whether you're looking for vibrant promotional stickers, impactful wayfinding signs, or grand corporate sign boards, we blend creativity with precision to ensure your message stands out. Beyond visual communication, we've grown to become a trusted supplier for a vast array of essential items. Our commitment is that we offer a diverse selection of safety-related products From personal protective equipment to hazard warnings ensuring compliance and industry standards. In addition, we streamline your procurement process by supplying high-quality stationery, crucial for daily operations, and a full suite of corporate office supplies, designed to keep your workspace productive and organized. We also provide essential sanitary-related, hardware-related and a variety of civil-related supplies for diverse project needs.</p>
+    </div>
+</main>
+<footer class="bg-gray-800 text-white **py-6**">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-6">
+
+                    <div class="mb-6 md:mb-0 text-center md:text-left">
+                        <h3 class="text-xl font-semibold mb-2">FIND US</h3>
+                        <div class="flex justify-center md:justify-start space-x-6">
+                            <a href="https://www.instagram.com" target="_blank" class="**text-white** hover:text-blue-300  transition duration-300">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com" target="_blank" class="**text-white** hover:text-blue-300 transition duration-300">
+                                <i class="fab fa-facebook-f "></i>
+                            </a>
+                            <a href="https://wa.me/YOURPHONENUMBER" target="_blank" class="**text-white** hover:text-blue-300 transition duration-300">
+                                <i class="fab fa-whatsapp "></i>
+                            </a>
+                            <a href="https://www.youtube.com" target="_blank" class="**text-white** hover:text-blue-300 transition duration-300">
+                                <i class="fab fa-youtube "></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="text-center md:text-right">
+                        <div class="flex items-center justify-center md:justify-end mb-3">
+                            <i class="fas fa-phone mr-1"></i>
+                            <span class="text-sm"> : 9686235673 / 9880698809
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-center md:justify-end">
+                            <i class="fas fa-envelope mr-1"></i>
+                            <span class="text-sm"><a href="mailto:example@example.com"> : deepthienterprises3@example.com</a></span>
+                        </div>
+                      </div>
+                </div>
+                <div class=" border-gray-700 mt-0.5 text-center text-gray-400 text-sm">
+                    © 2025 DeepthiEnterprises. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+<script>
+        document.getElementById('menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="output.css">
+   <style>
+    main{
+        margin-top: 80px;
+    }
+   .imgs{
+    display: grid;
+     grid-template-columns: repeat(4, 1fr); /* Creates 3 columns, each taking 1 fractional unit of space */
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px 30px;
+    margin-top: 30px;
+    padding-inline: 18px;
+   }
+  .imgs img{
+    height: 250px;
+    width: 250px;
+   }
+   .imgs img:hover{
+    border-radius: 20%;
+    transition:0.3s ease-in-out;
+    border:2px solid rgb(43, 41, 41);
+   }
+    @media screen and (max-width:850px) {
+    .imgs{
+         grid-template-columns: repeat(2, 1fr); 
+         grid-template-rows: repeat(2, 1fr);
+    }
+    }
+    @media screen and (max-width:500px) {
+    .imgs{
+         grid-template-columns: repeat(1, 2fr); 
+         grid-template-rows: repeat(1, 2fr);
+    }
+   }
+   </style>
+</head>
+<body class="bg-slate-400">
+<header class=" fixed top-0 right-0 left-0"> 
+  <nav class="bg-gray-300 p-4 text-black font shadow-lg">
+         <div class=" container mx-auto flex justify-between items-center">
+            <div>
+                <img src="logo.jpg" height="30px" width="30px">
+            </div>
+
+            <div class="hidden md:flex space-x-11 mr-11">
+                <a href="index.html" class="hover:font-bold transition duration-300">Home</a>
+                <a href="services.html" class="hover:font-bold transition duration-300">Services</a>
+                <a href="portfolio.html" class="hover:font-bold transition duration-300">Portfolio</a>
+                <a href="contact.html" class="hover:font-bold transition duration-300">Contact</a>
+            </div>
+
+            <div class="md:hidden">
+                <button id="menu-button" class="text-black focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-300 py-2 mt-2">
+            <a href="index.html" class="block px-4 py-2 text-black hover:bg-gray-400">Home</a>
+            <a href="services.html" class="block px-4 py-2 text-black hover:bg-gray-400">Services</a>
+           <a href="portfolio.html" class="block px-4 py-2 text-black hover:bg-gray-400">Portfolio</a>
+            <a href="contact.html" class="block px-4 py-2 text-black hover:bg-gray-400">Contact</a>
+        </div>
+    </nav>
+
+    
+
+    
+
+</header>
+<main class="min-h-screen">
+    <div class="works mb-11">
+        <h3 class="mb-3 text-center text-3xl font-bold">OUR WORKS</h3>
+        <div class="imgs">
+           
+        <img src="ex.png" alt="">
+        <img src="ex.png" alt="">
+        <img src="ex.png" alt="">
+        <img src="ex.png" alt="">
+        
+        <img src="ex.png" alt="">
+        <img src="ex.png" alt="">
+        <img src="ex.png" alt="">
+        <img src="ex.png" alt="">
+        
+        </div>
+    </div>
+    <div class="clients">
+        <h3 class=" mb-3 text-center text-3xl font-bold">OUR CLIENTS</h3>
+        <div class="imgs">
+        <img src="clients/cl1.png" alt="">
+        <img src="clients/cl2.png"  alt="">
+        <img src="clients/cl3.png"  alt="">
+        <img src="clients/cl4.png"  alt="">
+        <img src="clients/cl5.png"  alt="">
+        <img src="clients/cl6.jpeg"  alt="">
+       <img src="clients/cl7.jpg"  alt="">
+       <img src="clients/cl8.png"  alt="">
+        </div>
+    </div>
+</main>
+<footer class="bg-gray-800 text-white **py-6**">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-6">
+
+                    <div class="mb-6 md:mb-0 text-center md:text-left">
+                        <h3 class="text-xl font-semibold mb-2">FIND US</h3>
+                        <div class="flex justify-center md:justify-start space-x-6">
+                            <a href="https://www.instagram.com" target="_blank" class="**text-white** hover:text-blue-300  transition duration-300">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com" target="_blank" class="**text-white** hover:text-blue-300 transition duration-300">
+                                <i class="fab fa-facebook-f "></i>
+                            </a>
+                            <a href="https://wa.me/YOURPHONENUMBER" target="_blank" class="**text-white** hover:text-blue-300 transition duration-300">
+                                <i class="fab fa-whatsapp "></i>
+                            </a>
+                            <a href="https://www.youtube.com" target="_blank" class="**text-white** hover:text-blue-300 transition duration-300">
+                                <i class="fab fa-youtube "></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="text-center md:text-right">
+                        <div class="flex items-center justify-center md:justify-end mb-3">
+                            <i class="fas fa-phone mr-1"></i>
+                            <span class="text-sm"> : 9686235673 / 9880698809
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-center md:justify-end">
+                            <i class="fas fa-envelope mr-1"></i>
+                            <span class="text-sm"><a href="mailto:example@example.com"> : deepthienterprises3@example.com</a></span>
+                        </div>
+                      </div>
+                </div>
+                <div class=" border-gray-700 pt-0.5 text-center text-gray-400 text-sm">
+                    © 2025 DeepthiEnterprises. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+<script>
+        document.getElementById('menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+       
+    </script>
+</body>
+</html>
