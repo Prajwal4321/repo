@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 in 1 tool</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: serif;
+            background-color: #f0f0f0;
+        }
+        .container{
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+            height: 100vh;
+            gap: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .quad{
+            background-color: white;
+            background-repeat: 10px;
+            padding: 20px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 6px;
+        }
+        h2{
+            margin-top: 0;
+            color: #333;
+            font-size: 50px;
+        }
+        input, button, select{
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button{
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: #0056b3;
+        }
+        .res{
+            font-size: 30px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--age calculator-->
+        <div class="quad">
+            <h2>Age Calculator : </h2>
+            <input type="date" id="dob">
+            <button onclick="calcAge()">Calculate</button>
+            <div id="ageResult" class ="res"></div>
+        </div>
+
+        <!--countdown timer-->
+        <div class="quad">
+            <h2>CountDown Timer : </h2>
+            <input type="number" id="minutes" placeholder="Minutes"min="0">
+            <button onclick="startTimer()">Start Timer</button>
+            <button onclick="stopTimer()">Stop Timer</button>
+            <button onclick="resetTimer()">Reset</button>
+            <div id="timerDisplay" class="res">00:00:00</div>
+        </div>
+
+        <!--stopwatch-->
+        <div class="quad">
+            <h2>Stopwatch</h2>
+            <div id="stopwatch" class="res">00:00:00</div>
+            <button onclick="startStopwatch()">Start</button>
+            <button onclick="stopStopwatch()">Stop</button>
+            <button onclick="resetStopwatch()">Reset</button>
+        </div>
+
+        <!--temp conv-->
+        <div class="quad">
+            <h2>Temperature Converter : </h2>
+            <input type="number" placeholder="Enter value" id="tempInput">
+                <select id="fromUnit">
+                    <option value ="C">Celsius</option>
+                    <option value ="F">Fahrenheit</option>
+                    <option value ="K">Kelvin</option>
+                </select>
+                <span> → </span>
+                <select id="toUnit">
+                    <option value ="C">Celsius</option>
+                    <option value ="F">Fahrenheit</option>
+                    <option value ="K">Kelvin</option>
+                </select>
+                <button onclick="convertTemp()">Convert</button>
+                <div id="tempResult" class="res">-</div>
+        </div>
+    </div>
+
+<script>
+    //=== Age Calculator ===
+    function calcAge(){
+        const birth = new Date(document.getElementById("dob").value);
+        const today = new Date();
+        if ( ! birth || birth > today) 
+        return document.getElementById("ageResult").innerText = "Invalid Date";
+
+        let y = today.getFullYear() - birth.getFullYear();
+        let m = today.getMonth() - birth.getMonth();
+        let d = today.getDate() - birth.getDate();
+        if(d<0){
+            m--;
+            d+= new Date(today.getFullYear(), today.getMonth(),0).getDate();
+        }
+        if(m<0){
+            y--;
+            m+=12;
+        }
+        document.getElementById("ageResult").innerText = `You are ${y} years, ${m} months, ${d} days old.`;
+    }
+
+    //=== Countdown timer ===
+    let timerInterval;
+    function startTimer(){
+        clearInterval(timerInterval);
+        let minutes = parseInt(document.getElementById("minutes").value) || 0;
+        let seconds = minutes * 60;
+
+        timerInterval = setInterval(() => {
+            if (seconds <=0){
+                clearInterval(timerInterval);
+                document.getElementById("timerDisplay").innerText = "Time's up !";
+                return;
+            }
+            seconds--;
+            let h = Math.floor(seconds / 3600).toString().padStart(2,'0');
+            let m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+            let s = (seconds % 60).toString().padStart(2, '0');
+            document.getElementById("timerDisplay").innerText = `${h}:${m}:${s}`;
+        },1000);
+    }
+
+    function stopTimer() {
+    clearInterval(timerInterval);
+    }
+
+    function resetTimer() {
+    clearInterval(timerInterval);
+    document.getElementById("timerDisplay").innerText = "00:00:00";
+    }
+
+
+    //=== StopWatch ===
+    let swInterval, swSeconds =0;
+    function startStopwatch(){
+        clearInterval(swInterval);
+        swInterval = setInterval(()=>{
+            swSeconds++;
+            let h = Math.floor(swSeconds / 3600).toString().padStart(2,'0');
+        let m = Math.floor((swSeconds % 3600)/60).toString().padStart(2,'0');
+        let s = (swSeconds % 60).toString().padStart(2,'0');
+        document.getElementById("stopwatch").innerText = `${h}:${m}:${s}`;
+        },1000);
+    }
+
+    function stopStopwatch(){
+        clearInterval(swInterval);
+    }
+
+    function resetStopwatch(){
+        clearInterval(swInterval);
+        swSeconds = 0;
+        document.getElementById("stopwatch").innerText = "00:00:00";
+    }
+
+    //=== Temp Conv ===
+    function convertTemp(){
+        const val = parseFloat(document.getElementById("tempInput").value);
+        if (isNaN(val))
+        return document.getElementById("tempResult").innerText = "Enter a number";
+
+        const from = document.getElementById("fromUnit").value;
+        const to = document.getElementById("toUnit").value;
+
+        let c = from === "C" ? val : from === "F" ? (val -32) * 5/9 : val - 273.15;
+
+        let result;
+        if(to === "C") result =c;
+        else if (to === "F") result = c* 9/5 +32;
+        else result = c+ 273.15;
+
+        document.getElementById("tempResult").innerText = result.toFixed(2)+"°"+ to;
+    }
+
+</script>
+
+</body>
+</html>

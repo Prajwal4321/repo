@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .tabs-container {
+    width: 70%;
+    height: 70vh;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.tabs-header {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+.tab-button {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: none;
+    border-right: 1px solid #ccc;
+    outline: none;
+    transition: background-color 0.3s;
+}
+.tab-button:last-child {
+    border-right: none;
+}
+.tab-button:hover:not(.active) {
+    background-color: #ddd;
+}
+.tab-button.active {
+    background-color: #fff;
+    border-bottom: 2px solid #007bff;
+}
+.tabs-content {
+    padding: 15px;
+}
+.tab-panel {
+    display: none; /* Hide all panels by default */
+}
+.tab-panel.active {
+    display: block; /* Show the active panel */
+}
+    </style>
+</head>
+<body>
+    <div class="tabs-container">
+    <div class="tabs-header">
+        <button class="tab-button active" data-tab="tab1">Tab One</button>
+        <button class="tab-button" data-tab="tab2">Tab Two</button>
+        <button class="tab-button" data-tab="tab3">Tab Three</button>
+    </div>
+    <div class="tabs-content">
+        <div id="tab1" class="tab-panel active">
+            <h3>Content for Tab One</h3>
+            <p>This is the first section of information.</p>
+        </div>
+        <div id="tab2" class="tab-panel">
+            <h3>Content for Tab Two</h3>
+            <p>This section contains the second piece of information.</p>
+        </div>
+        <div id="tab3" class="tab-panel">
+            <h3>Content for Tab Three</h3>
+            <p>The final content goes here in the third section.</p>
+        </div>
+    </div>
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // 1. Get the target tab ID
+            const targetTabId = button.getAttribute('data-tab');
+
+            // 2. Remove 'active' class from all buttons and panels
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+
+            // 3. Add 'active' class to the clicked button
+            button.classList.add('active');
+
+            // 4. Add 'active' class to the corresponding panel
+            document.getElementById(targetTabId).classList.add('active');
+        });
+    });
+});
+    </script>
+</body>
+</html>
+

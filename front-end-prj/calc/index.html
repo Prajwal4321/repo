@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calculator {
+    width: 300px;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+.display {
+    width: 100%;
+    height: 60px;
+    font-size: 2em;
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #fff;
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+.buttons {
+    display: grid;
+    /* Defines 4 equally spaced columns */
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 8px;
+}
+
+.btn {
+    padding: 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #e0e0e0;
+    transition: background-color 0.1s;
+}
+
+.btn:hover {
+    background-color: #d4d4d4;
+}
+
+.operator {
+    background-color: #ff9500;
+    color: white;
+}
+
+.function {
+    background-color: #d4d4d4;
+}
+
+.equals {
+    background-color: #007bff;
+    color: white;
+    /* Make the equals button span two columns */
+    grid-column: span 2; 
+}
+
+.zero {
+    /* Adjust '0' button placement if needed, or leave it in standard spot */
+    /* If you want 0 to span two columns: grid-column: span 2; */
+}
+    </style>
+</head>
+<body>
+    <div class="calculator">
+    <input type="text" class="display" value="0" disabled>
+
+    <div class="buttons">
+        <button class="btn function">C</button>
+        <button class="btn function">AC</button>
+        <button class="btn operator">/</button>
+        <button class="btn operator">×</button>
+
+        <button class="btn number">7</button>
+        <button class="btn number">8</button>
+        <button class="btn number">9</button>
+        <button class="btn operator">-</button>
+
+        <button class="btn number">4</button>
+        <button class="btn number">5</button>
+        <button class="btn number">6</button>
+        <button class="btn operator">+</button>
+
+        <button class="btn number">1</button>
+        <button class="btn number">2</button>
+        <button class="btn number">3</button>
+        <button class="btn function">%</button>
+        
+        <button class="btn number zero">0</button>
+        <button class="btn number">.</button>
+        <button class="btn equals">=</button>
+    </div>
+</div>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    const display = document.querySelector('.display');
+    const buttons = document.querySelectorAll('.btn');
+    let currentInput = '';
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const buttonText = button.textContent;
+
+            switch (buttonText) {
+                case 'AC':
+                    // All Clear: Reset everything
+                    currentInput = '';
+                    display.value = '0';
+                    break;
+                
+                case 'C':
+                    // Clear: Delete the last character
+                    currentInput = currentInput.slice(0, -1);
+                    display.value = currentInput || '0';
+                    break;
+                    
+                case '=':
+                    // Calculate result
+                    try {
+                        // Replace '×' with '*' and '÷' with '/' for evaluation
+                        const expression = currentInput.replace(/×/g, '*').replace(/÷/g, '/');
+                        let result = eval(expression);
+                        
+                        // Handle potential floating-point errors
+                        if (Number.isFinite(result)) {
+                            result = parseFloat(result.toFixed(8));
+                        }
+                        
+                        display.value = result;
+                        currentInput = String(result);
+                    } catch (error) {
+                        display.value = 'Error';
+                        currentInput = '';
+                    }
+                    break;
+                    
+                default:
+                    // Handles all numbers, decimals, and standard operators
+                    currentInput += buttonText;
+                    display.value = currentInput;
+                    break;
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>
